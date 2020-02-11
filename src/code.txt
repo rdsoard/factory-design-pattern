@@ -1,0 +1,139 @@
+/**
+ * 
+ * @author Rebekah Soard 
+ * This class serves as a place to take in user input for creating/ordering a cereal
+ */
+public class GroceryStore {
+ /**
+  * This method runs the createCereal method
+  * @param type the type of cereal being ordered
+  * @return the cereal that was ordered
+  */
+    public Cereal orderCereal(String type) {
+        return this.createCereal(type);
+    }
+/**
+ * This method matches the type given to a Cereal child class, and runs all the Cereal methods
+ * @param type the type of cereal that was ordered
+ * @return the cereal that was ordered
+ */
+    private Cereal createCereal(String type) {
+        Cereal cereal;
+        if (type.equalsIgnoreCase("frosted flakes")) {
+            cereal = new FrostedFlakes();
+        } else if (type.equalsIgnoreCase("fruit loops")) {
+            cereal = new FruitLoops();
+        } else if (type.equalsIgnoreCase("lucky charms")) {
+            cereal = new LuckyCharms();
+        } else {
+            cereal = new LuckyCharms();
+        }
+
+        cereal.prepare();
+        cereal.boxCereal();
+        cereal.priceCereal();
+
+        return cereal;
+    }
+}
+----------------------------------------------------------------------------------
+/**
+ * 
+ * @author Rebekah Soard
+ * This class prints out messages relating to what each method is doing for the cereal 
+ */
+public class Cereal {
+    protected String name;
+    protected double price;
+/** 
+ * This method prints out a message about preparing with the name of the cereal
+ */
+    public void prepare() {
+        System.out.println("Preparing the " + this.name);
+    }
+/**
+ * This method prints out a message about boxing the cereal with the name of the cereal
+ */
+    public void boxCereal() {
+        System.out.println(
+            "Putting fun pictures of " + this.name + "\nPouring the " + this.name + " into the box");
+    }
+/**
+ * This method prints out a message about pricing the cereal with the price and name
+ */
+    public void priceCereal() {
+        System.out.println("Putting the price tag of $" + this.price + " on the " + this.name + " box");
+    }
+}
+----------------------------------------------------------------------------------
+/**
+ * 
+ * @author Rebekah Soard
+ * This class contains the information for the frosted flakes cereal
+ */
+public class FrostedFlakes extends Cereal {
+    private static final double COST = 2.99;
+/**
+ * This method sets the name and cost of the cereal to match the class
+ */
+    FrostedFlakes() {
+        this.name = "Frosted Flakes";
+        this.price = COST;
+    }
+/**
+ * This method calls the parent method and prints out a special method for this type of cereal
+ */
+    public void prepare() {
+        super.prepare();
+        System.out.println("  - Gather the grain\n  - Shape into flakes\n  - Sprinkle with frosting");
+    }
+}
+----------------------------------------------------------------------------------
+/**
+ * 
+ * @author Rebekah Soard
+ * This class contains the information for the lucky charms cereal
+ */
+public class LuckyCharms extends Cereal {
+    private static final double COST = 1.55;
+/**
+ * This method sets the name and cost of the cereal to match the class
+ */
+    LuckyCharms() {
+        this.name = "Lucky Charms";
+        this.price = COST;
+    }
+/**
+ * This method calls the parent method and prints out a special method for this type of cereal
+ */
+    public void prepare() {
+        super.prepare();
+        System.out.println("  - Gather the grain\n  - Shape into circles\n"
+            + "  - Create marshmellow shapes\n  - Mix circles and marshmellows");
+    }
+}
+----------------------------------------------------------------------------------
+/**
+ * 
+ * @author Rebekah Soard
+ * This class contains the information for the fruit loops cereal
+ */
+public class FruitLoops extends Cereal {
+    private static final double COST = 1.89;
+/**
+ * This method sets the name and cost of the cereal to match the class
+ */
+    FruitLoops() {
+        this.name = "Fruit Loops";
+        this.price = COST;
+    }
+/**
+ * This method calls the parent method and prints out a special method for this type of cereal
+ */
+    public void prepare() {
+        super.prepare();
+        System.out.println(
+            "  - Gather the grain\n  - Shape into circles\n  - Randomly color circles\n  - Let circles dry");
+    }
+}
+----------------------------------------------------------------------------------
